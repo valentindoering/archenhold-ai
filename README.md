@@ -21,7 +21,7 @@ There are two main patterns demonstrated:
 
 ## Setup
 
-- This is a Next.js typescript app. Install dependencies with `npm i`.
+- This is a Next.js typescript app. Install dependencies with `npm install --legacy-peer-deps` (the `--legacy-peer-deps` flag is required due to zod version conflicts between dependencies).
 - Add your `OPENAI_API_KEY` to your env. Either add it to your `.bash_profile` or equivalent, or copy `.env.sample` to `.env` and add it there.
 - Start the server with `npm run dev`
 - Open your browser to [http://localhost:3000](http://localhost:3000). It should default to the `chatSupervisor` Agent Config.
