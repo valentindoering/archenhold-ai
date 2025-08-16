@@ -9,6 +9,7 @@ import Image from "next/image";
 import Transcript from "./components/Transcript";
 import Events from "./components/Events";
 import BottomToolbar from "./components/BottomToolbar";
+import PersonalInfoForm from "./components/PersonalInfoForm";
 
 // Types
 import { SessionStatus } from "@/app/types";
@@ -25,9 +26,11 @@ import { allAgentSets, defaultAgentSetKey } from "@/app/agentConfigs";
 import { customerServiceRetailScenario } from "@/app/agentConfigs/customerServiceRetail";
 import { chatSupervisorScenario } from "@/app/agentConfigs/chatSupervisor";
 import { chatSupervisor2Scenario } from "@/app/agentConfigs/chatSupervisor2";
+import { chatSupervisor3Scenario } from "@/app/agentConfigs/chatSupervisor3";
 import { customerServiceRetailCompanyName } from "@/app/agentConfigs/customerServiceRetail";
 import { chatSupervisorCompanyName } from "@/app/agentConfigs/chatSupervisor";
 import { chatSupervisor2CompanyName } from "@/app/agentConfigs/chatSupervisor2";
+import { chatSupervisor3CompanyName } from "@/app/agentConfigs/chatSupervisor3";
 import { simpleHandoffScenario } from "@/app/agentConfigs/simpleHandoff";
 
 // Map used by connect logic for scenarios defined via the SDK.
@@ -36,6 +39,7 @@ const sdkScenarioMap: Record<string, RealtimeAgent[]> = {
   customerServiceRetail: customerServiceRetailScenario,
   chatSupervisor: chatSupervisorScenario,
   chatSupervisor2: chatSupervisor2Scenario,
+  chatSupervisor3: chatSupervisor3Scenario,
 };
 
 import useAudioDownload from "./hooks/useAudioDownload";
@@ -219,6 +223,8 @@ function App() {
           ? customerServiceRetailCompanyName
           : agentSetKey === 'chatSupervisor2'
           ? chatSupervisor2CompanyName
+          : agentSetKey === 'chatSupervisor3'
+          ? chatSupervisor3CompanyName
           : chatSupervisorCompanyName;
         const guardrail = createModerationGuardrail(companyName);
 
@@ -532,6 +538,23 @@ function App() {
         />
 
         <Events isExpanded={isEventsPaneExpanded} />
+        
+        {agentSetKey === 'chatSupervisor3' && (
+          <PersonalInfoForm 
+            onFieldUpdate={(fieldId, value) => {
+              // Handle form field updates from voice commands
+              if ((window as any).updateFormField) {
+                (window as any).updateFormField(fieldId, value);
+              }
+            }}
+            onSubmit={() => {
+              console.log('Form submitted via UI');
+            }}
+            onClear={() => {
+              console.log('Form cleared via UI');
+            }}
+          />
+        )}
       </div>
 
       <BottomToolbar
