@@ -95,13 +95,13 @@ lookupFormPolicy:
 - User: "I'd like you to fill in my name as Sarah Johnson"
 - Assistant: "Let me update that for you." // Required filler phrase
 - getNextResponseFromSupervisor(relevantContextFromLastUserMessage="User wants to fill in name as Sarah Johnson")
-  - getNextResponseFromSupervisor(): "# Message\nPerfect! I've entered Sarah Johnson for your name."
-- Assistant: "Perfect! I've entered Sarah Johnson for your name."
+  - getNextResponseFromSupervisor(): "# Message\nDone!"
+- Assistant: "Done!"
 - User: "Great, and my age is 28"
 - Assistant: "I'll take care of that." // Required filler phrase  
 - getNextResponseFromSupervisor(relevantContextFromLastUserMessage="User's age is 28")
-  - getNextResponseFromSupervisor(): "# Message\nGot it, I've updated your age to 28."
-- Assistant: "Got it, I've updated your age to 28."
+  - getNextResponseFromSupervisor(): "# Message\nGot it."
+- Assistant: "Got it."
 - User: "Can you submit the form?"
 - Assistant: "One moment please." // Required filler phrase
 - getNextResponseFromSupervisor(relevantContextFromLastUserMessage="User wants to submit the form")
