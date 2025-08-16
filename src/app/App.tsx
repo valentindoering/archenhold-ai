@@ -10,6 +10,7 @@ import Transcript from "./components/Transcript";
 import Events from "./components/Events";
 import BottomToolbar from "./components/BottomToolbar";
 import PersonalInfoForm from "./components/PersonalInfoForm";
+import FlashcardApp from "./components/FlashcardApp";
 
 // Types
 import { SessionStatus } from "@/app/types";
@@ -27,10 +28,12 @@ import { customerServiceRetailScenario } from "@/app/agentConfigs/customerServic
 import { chatSupervisorScenario } from "@/app/agentConfigs/chatSupervisor";
 import { chatSupervisor2Scenario } from "@/app/agentConfigs/chatSupervisor2";
 import { chatSupervisor3Scenario } from "@/app/agentConfigs/chatSupervisor3";
+import { chatSupervisor4Scenario } from "@/app/agentConfigs/chatSupervisor4";
 import { customerServiceRetailCompanyName } from "@/app/agentConfigs/customerServiceRetail";
 import { chatSupervisorCompanyName } from "@/app/agentConfigs/chatSupervisor";
 import { chatSupervisor2CompanyName } from "@/app/agentConfigs/chatSupervisor2";
 import { chatSupervisor3CompanyName } from "@/app/agentConfigs/chatSupervisor3";
+import { chatSupervisor4CompanyName } from "@/app/agentConfigs/chatSupervisor4";
 import { simpleHandoffScenario } from "@/app/agentConfigs/simpleHandoff";
 
 // Map used by connect logic for scenarios defined via the SDK.
@@ -40,6 +43,7 @@ const sdkScenarioMap: Record<string, RealtimeAgent[]> = {
   chatSupervisor: chatSupervisorScenario,
   chatSupervisor2: chatSupervisor2Scenario,
   chatSupervisor3: chatSupervisor3Scenario,
+  chatSupervisor4: chatSupervisor4Scenario,
 };
 
 import useAudioDownload from "./hooks/useAudioDownload";
@@ -225,6 +229,8 @@ function App() {
           ? chatSupervisor2CompanyName
           : agentSetKey === 'chatSupervisor3'
           ? chatSupervisor3CompanyName
+          : agentSetKey === 'chatSupervisor4'
+          ? chatSupervisor4CompanyName
           : chatSupervisorCompanyName;
         const guardrail = createModerationGuardrail(companyName);
 
@@ -554,6 +560,10 @@ function App() {
               console.log('Form cleared via UI');
             }}
           />
+        )}
+        
+        {agentSetKey === 'chatSupervisor4' && (
+          <FlashcardApp />
         )}
       </div>
 
