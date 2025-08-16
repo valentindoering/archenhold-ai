@@ -1,7 +1,6 @@
 import { RealtimeItem, tool } from '@openai/agents/realtime';
 
 import {
-  exampleFormResponses,
   exampleFormPolicies,
 } from './sampleData';
 

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useCallback } from 'react';
-import { FormField, PersonalInfoForm as FormData } from '../agentConfigs/chatSupervisor3/sampleData';
+import { PersonalInfoForm as FormData } from '../agentConfigs/chatSupervisor3/sampleData';
 
 interface PersonalInfoFormProps {
   onFieldUpdate?: (fieldId: string, value: string) => void;
